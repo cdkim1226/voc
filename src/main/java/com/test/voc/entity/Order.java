@@ -18,7 +18,6 @@ public class Order {
     private Long id;
 
     private String orderNum;
-
     private LocalDateTime regDate;
 
 }

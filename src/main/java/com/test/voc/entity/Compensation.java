@@ -1,6 +1,5 @@
 package com.test.voc.entity;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,20 +9,22 @@ import java.time.LocalDateTime;
 import static javax.persistence.FetchType.*;
 
 @Entity
-@Table(name = "voc_tb")
+@Table(name = "compensation_tb")
 @Getter @Setter
-public class Voc {
+public class Compensation {
 
     @Id @GeneratedValue
-    @Column(name = "voc_seq")
+    @Column(name = "compensation_seq")
     private Long id;
 
     @OneToOne(fetch = LAZY)
-    @JoinColumn(name = "order_seq")
-    private Order order;
+    @JoinColumn(name = "voc_seq")
+    private Voc voc;
 
-    private String vocResponsibility;
-    private String vocNote;
+    private int sellerCost;
+    private int manufacturingCost;
+    private int deliveryCost;
+    private int compensateExpense;
     private LocalDateTime regDate;
 
 }
