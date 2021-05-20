@@ -1,4 +1,4 @@
-package com.test.voc.domain;
+package com.test.voc.entity;
 
 
 import lombok.Getter;

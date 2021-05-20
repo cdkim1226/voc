@@ -1,7 +1,9 @@
-package com.test.voc.domain;
+package com.test.voc.entity;
 
+import com.test.voc.entity.Voc;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -18,4 +20,5 @@ public class Order {
     private String orderNum;
 
     private LocalDateTime regDate;
+
 }
