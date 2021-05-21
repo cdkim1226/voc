@@ -15,7 +15,7 @@ import static javax.persistence.FetchType.*;
 public class Penalty {
 
     @Id @GeneratedValue
-    @Column(name = "penaltySeq")
+    @Column(name = "penalty_seq")
     private Long id;
 
     @OneToOne(fetch = LAZY)

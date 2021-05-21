@@ -41,6 +41,9 @@ public class initDB {
             Voc voc1 = createVoc("매니저", "오배송",order1);
             em.persist(voc1);
 
+            Manager manager1 = createManager("김창대");
+            em.persist(manager1);
+
         }
 
         private Order createOrder(String orderNum) {
