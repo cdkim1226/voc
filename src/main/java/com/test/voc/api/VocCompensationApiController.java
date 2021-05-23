@@ -68,9 +68,8 @@ public class VocCompensationApiController {
     public CreatePenaltyResponse savePenalty(@RequestBody @Valid CreatePenaltyRequest request) {
 
         Penalty penalty = new Penalty();
-        penalty.setCompensation(penaltyService.findOne(request.getCompensationSeq()));
-//        penalty.setManager(request.getManagerSeq());
-//        penalty.setManager(penaltyService.findOne(request.getManagerSeq()));
+        penalty.setCompensation(penaltyService.findOneCompensation(request.getCompensationSeq()));
+        penalty.setManager(penaltyService.findOneManager(request.getManagerSeq()));
         penalty.setPenaltyExpense(request.getPenaltyExpense());
         penalty.setPenaltyContents(request.getPenaltyContents());
         penalty.setRegDate(LocalDateTime.now());

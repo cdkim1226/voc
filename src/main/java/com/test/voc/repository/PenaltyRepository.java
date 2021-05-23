@@ -21,13 +21,13 @@ public class PenaltyRepository {
         this.query = new JPAQueryFactory(em);
     }
 
-    public Compensation findOne(Long compensationSeq) {
+    public Compensation findOneCompensation(Long compensationSeq) {
         return em.find(Compensation.class, compensationSeq);
     }
 
-//    public Manager findOne(Long managerSeq) {
-//        return em.find(Manager.class, managerSeq);
-//    }
+    public Manager findOneManager(Long managerSeq) {
+        return em.find(Manager.class, managerSeq);
+    }
 
     public void save(Penalty penalty) {
         em.persist(penalty);

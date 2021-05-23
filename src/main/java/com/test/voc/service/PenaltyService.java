@@ -14,13 +14,13 @@ public class PenaltyService {
 
     private final PenaltyRepository penaltyRepository;
 
-    public Compensation findOne(Long compensationSeq) {
-        return penaltyRepository.findOne(compensationSeq);
+    public Compensation findOneCompensation(Long compensationSeq) {
+        return penaltyRepository.findOneCompensation(compensationSeq);
     }
 
-//    public Manager findOne(Long managerSeq) {
-//        return penaltyRepository.findOne(managerSeq);
-//    }
+    public Manager findOneManager(Long managerSeq) {
+        return penaltyRepository.findOneManager(managerSeq);
+    }
 
     @Transactional
     public Long savePenalty(Penalty penalty) {

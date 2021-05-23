@@ -1,9 +1,6 @@
 package com.test.voc.init;
 
-import com.test.voc.entity.Customer;
-import com.test.voc.entity.Manager;
-import com.test.voc.entity.Order;
-import com.test.voc.entity.Voc;
+import com.test.voc.entity.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,6 +41,11 @@ public class initDB {
             Manager manager1 = createManager("김창대");
             em.persist(manager1);
 
+            Customer customer1 = createCustomer("오아시스");
+            em.persist(customer1);
+
+            Compensation compensation1 = createCompensation(10000, 7000, 2000, 5000, voc1);
+            em.persist(compensation1);
         }
 
         private Order createOrder(String orderNum) {
@@ -72,6 +74,17 @@ public class initDB {
             voc.setVocNote(vocNote);
             voc.setRegDate(LocalDateTime.now());
             return voc;
+        }
+
+        private Compensation createCompensation(int sellerCost, int manufacturingCost, int deliveryCost, int compensateExpense, Voc voc) {
+            Compensation compensation = new Compensation();
+            compensation.setVoc(voc);
+            compensation.setSellerCost(sellerCost);
+            compensation.setManufacturingCost(manufacturingCost);
+            compensation.setDeliveryCost(deliveryCost);
+            compensation.setCompensateExpense(compensateExpense);
+            compensation.setRegDate(LocalDateTime.now());
+            return compensation;
         }
     }
 
