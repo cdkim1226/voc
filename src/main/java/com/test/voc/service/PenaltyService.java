@@ -3,6 +3,7 @@ package com.test.voc.service;
 import com.test.voc.entity.Compensation;
 import com.test.voc.entity.Manager;
 import com.test.voc.entity.Penalty;
+import com.test.voc.entity.PenaltyStatus;
 import com.test.voc.repository.PenaltyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,5 +27,15 @@ public class PenaltyService {
     public Long savePenalty(Penalty penalty) {
         penaltyRepository.save(penalty);
         return penalty.getId();
+    }
+
+    public Penalty findOne(Long penaltySeq) {
+        return penaltyRepository.findOne(penaltySeq);
+    }
+
+    @Transactional
+    public void update(Long id, PenaltyStatus penaltyStatus) {
+        Penalty penalty = penaltyRepository.findOne(id);
+        penalty.setPenaltyStatus(penaltyStatus);
     }
 }

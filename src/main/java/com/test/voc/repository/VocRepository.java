@@ -1,11 +1,13 @@
 package com.test.voc.repository;
 
+import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.test.voc.dto.QVocQueryDto;
 import com.test.voc.dto.VocQueryDto;
 import com.test.voc.entity.Order;
 import com.test.voc.entity.Voc;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -40,6 +42,9 @@ public class VocRepository {
                 .fetch();
     }
 
+    private BooleanExpression orderNumEq(String orderNum) {
+        return StringUtils.hasText(orderNum) ? order.orderNum.eq(orderNum) : null;
+    }
 
     public void save(Voc voc) {
         em.persist(voc);

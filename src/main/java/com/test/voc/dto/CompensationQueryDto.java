@@ -10,6 +10,7 @@ public class CompensationQueryDto {
 
     private Long compensationSeq;
     private Long vocSeq;
+    private Long orderSeq;
     private int sellerCost;
     private int manufacturingCost;
     private int deliveryCost;
@@ -17,9 +18,10 @@ public class CompensationQueryDto {
     private LocalDateTime regDate;
 
     @QueryProjection
-    public CompensationQueryDto(Long compensationSeq, Long vocSeq, int sellerCost, int manufacturingCost, int deliveryCost, int compensateExpense, LocalDateTime regDate) {
+    public CompensationQueryDto(Long compensationSeq, Long vocSeq, Long orderSeq, int sellerCost, int manufacturingCost, int deliveryCost, int compensateExpense, LocalDateTime regDate) {
         this.compensationSeq = compensationSeq;
         this.vocSeq = vocSeq;
+        this.orderSeq = orderSeq;
         this.sellerCost = sellerCost;
         this.manufacturingCost = manufacturingCost;
         this.deliveryCost = deliveryCost;

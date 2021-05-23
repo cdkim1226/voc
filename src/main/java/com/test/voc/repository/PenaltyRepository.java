@@ -33,4 +33,7 @@ public class PenaltyRepository {
         em.persist(penalty);
     }
 
+    public Penalty findOne(Long id) {
+        return em.find(Penalty.class, id);
+    }
 }

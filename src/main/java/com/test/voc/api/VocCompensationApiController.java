@@ -1,9 +1,7 @@
 package com.test.voc.api;
 
 import com.test.voc.dto.*;
-import com.test.voc.entity.Compensation;
-import com.test.voc.entity.Penalty;
-import com.test.voc.entity.Voc;
+import com.test.voc.entity.*;
 import com.test.voc.service.CompensationService;
 import com.test.voc.service.PenaltyService;
 import com.test.voc.service.VocService;
@@ -72,8 +70,18 @@ public class VocCompensationApiController {
         penalty.setManager(penaltyService.findOneManager(request.getManagerSeq()));
         penalty.setPenaltyExpense(request.getPenaltyExpense());
         penalty.setPenaltyContents(request.getPenaltyContents());
+        penalty.setPenaltyStatus(PenaltyStatus.READY);
         penalty.setRegDate(LocalDateTime.now());
         Long id = penaltyService.savePenalty(penalty);
         return new CreatePenaltyResponse(id);
+    }
+
+    // 패널티 상태 변경
+    @PutMapping("/api/updatePenaltyStatus/{id}")
+    public UpdatePenaltyResponse updatePenalty(@PathVariable("id") Long id, @RequestBody @Valid UpdatePenaltyRequest request) {
+        // status - 0 : READY, 1 : 사인, 2 : 이의제기
+        penaltyService.update(id, request.getPenaltyStatus());
+        Penalty findPenalty = penaltyService.findOne(id);
+        return new UpdatePenaltyResponse(findPenalty.getId(), findPenalty.getPenaltyStatus());
     }
 }

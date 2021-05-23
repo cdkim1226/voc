@@ -21,6 +21,7 @@ public class Compensation {
     @JoinColumn(name = "voc_seq")
     private Voc voc;
 
+
     private int sellerCost;
     private int manufacturingCost;
     private int deliveryCost;
