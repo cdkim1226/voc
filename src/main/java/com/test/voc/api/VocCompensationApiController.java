@@ -78,10 +78,12 @@ public class VocCompensationApiController {
 
     // 패널티 상태 변경
     @PutMapping("/api/updatePenaltyStatus/{id}")
-    public UpdatePenaltyResponse updatePenalty(@PathVariable("id") Long id, @RequestBody @Valid UpdatePenaltyRequest request) {
-        // status - 0 : READY, 1 : 사인, 2 : 이의제기
-        penaltyService.update(id, request.getPenaltyStatus());
+    public UpdatePenaltyResponse updatePenalty(@PathVariable("id") Long id,
+                                               @RequestBody @Valid UpdatePenaltyRequest request) {
+        // status - 0: READY, 1: 사인, 2: 이의제기
+        penaltyService.update(id, request.getPenaltyStatus(), request.getPenaltyContents(),
+                                request.getVocStatus());
         Penalty findPenalty = penaltyService.findOne(id);
-        return new UpdatePenaltyResponse(findPenalty.getId(), findPenalty.getPenaltyStatus());
+        return new UpdatePenaltyResponse(findPenalty.getId(), findPenalty.getPenaltyContents(), findPenalty.getPenaltyStatus());
     }
 }

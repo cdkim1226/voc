@@ -1,9 +1,6 @@
 package com.test.voc.service;
 
-import com.test.voc.entity.Compensation;
-import com.test.voc.entity.Manager;
-import com.test.voc.entity.Penalty;
-import com.test.voc.entity.PenaltyStatus;
+import com.test.voc.entity.*;
 import com.test.voc.repository.PenaltyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -34,8 +31,11 @@ public class PenaltyService {
     }
 
     @Transactional
-    public void update(Long id, PenaltyStatus penaltyStatus) {
+    public void update(Long id, PenaltyStatus penaltyStatus, String penaltyContents, VocStatus vocStatus) {
         Penalty penalty = penaltyRepository.findOne(id);
         penalty.setPenaltyStatus(penaltyStatus);
+        penalty.setPenaltyContents(penaltyContents);
+        Voc voc = new Voc();
+        voc.setVocStatus(vocStatus);
     }
 }

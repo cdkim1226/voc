@@ -21,6 +21,9 @@ public class Compensation {
     @JoinColumn(name = "voc_seq")
     private Voc voc;
 
+    @OneToOne(fetch = LAZY)
+    @JoinColumn(name = "order_seq")
+    private Order order;
 
     private int sellerCost;
     private int manufacturingCost;

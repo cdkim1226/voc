@@ -6,6 +6,7 @@ import com.test.voc.dto.QVocQueryDto;
 import com.test.voc.dto.VocQueryDto;
 import com.test.voc.entity.Order;
 import com.test.voc.entity.Voc;
+import com.test.voc.entity.VocStatus;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
@@ -33,6 +34,7 @@ public class VocRepository {
                         voc.id.as("vocSeq"),
                         order.id.as("order_seq"),
                         order.orderNum,
+                        voc.vocStatus,
                         voc.vocResponsibility,
                         voc.vocNote,
                         voc.regDate

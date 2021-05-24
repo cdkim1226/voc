@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+// 조회용 DTO
 @Data
 public class CompensationQueryDto {
 

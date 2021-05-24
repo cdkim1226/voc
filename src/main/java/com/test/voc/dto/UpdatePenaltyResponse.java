@@ -8,5 +8,6 @@ import lombok.Data;
 @AllArgsConstructor
 public class UpdatePenaltyResponse {
     private Long id;
+    private String penaltyContents;
     private PenaltyStatus penaltyStatus;
 }

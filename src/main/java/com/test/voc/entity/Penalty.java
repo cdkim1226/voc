@@ -26,6 +26,10 @@ public class Penalty {
     @JoinColumn(name = "compensation_seq")
     private Compensation compensation;
 
+    @OneToOne(fetch = LAZY)
+    @JoinColumn(name = "order_seq")
+    private Order order;
+
     private int penaltyExpense;
     private PenaltyStatus penaltyStatus; // 0패널티등록상태, 1매니저서명, 2이의제기
     private String penaltyContents;

@@ -22,6 +22,8 @@ public class Voc {
     @JoinColumn(name = "order_seq")
     private Order order;
 
+
+    private VocStatus vocStatus; // 0: voc 접수상태, 1: 매니저 서명 완료, 2: 이의제기, 3: 배상 등록
     private String vocResponsibility;
     private String vocNote;
     private LocalDateTime regDate;
